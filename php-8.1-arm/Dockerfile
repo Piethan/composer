@@ -9,12 +9,13 @@ RUN set -eux ; \
     coreutils \
     git \
     make \
-    openssh-client \
+    openssh-client-default \
     patch \
     subversion \
     tini \
     unzip \
-    zip
+    zip \
+    $([ "$(apk --print-arch)" != "x86" ] && echo mercurial) \
 
 RUN printf "# composer php cli ini settings\n\
 date.timezone=UTC\n\
