@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64 php:8.1-alpine3.15
+FROM --platform=linux/arm/v7 php:8.1-alpine3.15
 
 MAINTAINER Dirk Piethan
 
