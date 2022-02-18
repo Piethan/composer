@@ -14,8 +14,7 @@ RUN set -eux ; \
     subversion \
     tini \
     unzip \
-    zip \
-    $([ "$(apk --print-arch)" != "x86" ] && echo mercurial)
+    zip
 
 RUN printf "# composer php cli ini settings\n\
 date.timezone=UTC\n\
