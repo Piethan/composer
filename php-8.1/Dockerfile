@@ -1,4 +1,4 @@
-FROM php:8.0-alpine3.15
+FROM php:8.1-alpine3.15
 
 MAINTAINER Dirk Piethan
 
