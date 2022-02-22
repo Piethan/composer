@@ -1,4 +1,4 @@
-FROM php:7.2-alpine3.12
+FROM php:7.4.19-alpine3.12
 
 MAINTAINER Dirk Piethan
 
