@@ -16,6 +16,7 @@ RUN set -eux ; \
     unzip \
     zip \
     rsync \
+    php7-ldap \
     $([ "$(apk --print-arch)" != "x86" ] && echo mercurial)
 
 RUN printf "# composer php cli ini settings\n\
@@ -25,7 +26,7 @@ memory_limit=-1\n\
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /tmp
-ENV COMPOSER_VERSION 2.2.6
+ENV COMPOSER_VERSION 2.3.5
 
 RUN set -eux ; \
   # install https://github.com/mlocati/docker-php-extension-installer
@@ -43,6 +44,7 @@ RUN set -eux ; \
   install-php-extensions \
     bz2 \
     zip \
+    ldap \
   ; \
   # install public keys for snapshot and tag validation, see https://composer.github.io/pubkeys.html
   curl \
