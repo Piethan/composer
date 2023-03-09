@@ -45,6 +45,7 @@ RUN set -eux ; \
     bz2 \
     zip \
     ldap \
+    intl \
   ; \
   # install public keys for snapshot and tag validation, see https://composer.github.io/pubkeys.html
   curl \
