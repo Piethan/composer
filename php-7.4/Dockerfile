@@ -18,6 +18,8 @@ RUN set -eux ; \
     rsync \
     php7-ldap \
     php7-intl \
+    nodejs \
+    npm \
     $([ "$(apk --print-arch)" != "x86" ] && echo mercurial)
 
 RUN printf "# composer php cli ini settings\n\
@@ -46,7 +48,6 @@ RUN set -eux ; \
     bz2 \
     zip \
     ldap \
-    intl \
   ; \
   # install public keys for snapshot and tag validation, see https://composer.github.io/pubkeys.html
   curl \
