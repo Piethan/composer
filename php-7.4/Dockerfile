@@ -18,9 +18,10 @@ RUN set -eux ; \
     rsync \
     php7-ldap \
     php7-intl \
-    nodejs \
     npm \
     $([ "$(apk --print-arch)" != "x86" ] && echo mercurial)
+
+RUN npm install -g node@8.12.0
 
 RUN printf "# composer php cli ini settings\n\
 date.timezone=UTC\n\
