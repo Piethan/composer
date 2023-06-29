@@ -1,6 +1,17 @@
+ARG NODE_VERSION=10.24.1
+
+FROM node:${NODE_VERSION}-alpine AS node
+
 FROM php:7.3-alpine3.15
 
 MAINTAINER Dirk Piethan
+
+COPY --from=node /usr/lib /usr/lib
+COPY --from=node /usr/local/lib /usr/local/lib
+COPY --from=node /usr/local/include /usr/local/include
+COPY --from=node /usr/local/bin /usr/local/bin
+
+RUN node -v
 
 RUN set -eux ; \
   apk add --no-cache --virtual .composer-rundeps \
@@ -16,6 +27,8 @@ RUN set -eux ; \
     unzip \
     zip \
     rsync \
+    php7-ldap \
+    php7-intl \
     $([ "$(apk --print-arch)" != "x86" ] && echo mercurial)
 
 RUN printf "# composer php cli ini settings\n\
@@ -43,6 +56,8 @@ RUN set -eux ; \
   install-php-extensions \
     bz2 \
     zip \
+    ldap \
+    intl \
   ; \
   # install public keys for snapshot and tag validation, see https://composer.github.io/pubkeys.html
   curl \
