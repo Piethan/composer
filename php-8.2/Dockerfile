@@ -2,7 +2,7 @@ ARG NODE_VERSION=10.24.1
 
 FROM node:${NODE_VERSION}-alpine AS node
 
-FROM php:8.1-alpine3.20
+FROM php:8.2-alpine3.20
 
 MAINTAINER Dirk Piethan
 

@@ -27,6 +27,8 @@ RUN set -eux ; \
     unzip \
     zip \
     rsync \
+    php-ldap \
+    php-intl \
     $([ "$(apk --print-arch)" != "x86" ] && echo mercurial)
 
 RUN printf "# composer php cli ini settings\n\
