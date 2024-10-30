@@ -1,6 +1,17 @@
-FROM php:8.0-alpine3.15
+ARG NODE_VERSION=10.24.1
+
+FROM node:${NODE_VERSION}-alpine AS node
+
+FROM php:8.0-alpine3.16
 
 MAINTAINER Dirk Piethan
+
+COPY --from=node /usr/lib /usr/lib
+COPY --from=node /usr/local/lib /usr/local/lib
+COPY --from=node /usr/local/include /usr/local/include
+COPY --from=node /usr/local/bin /usr/local/bin
+
+RUN node -v
 
 RUN set -eux ; \
   apk add --no-cache --virtual .composer-rundeps \
